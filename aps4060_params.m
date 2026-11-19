@@ -6,7 +6,7 @@
 % =====================================================================
 
 %% --- Zrodlo parametrow elektrycznych ---
-%  'pomiar'   = wlasne pomiary 17.11.2026 (U/I 3 pary + L metoda szeregowego R)
+%  'pomiar'   = wlasne pomiary 19.11.2026 (U/I 3 pary + L 3 pary metoda szeregowego R)
 %  'profiler' = ST Motor Profiler (do porownania)
 src = 'pomiar';
 
@@ -14,17 +14,21 @@ src = 'pomiar';
 Rs_prof = 0.2;         % [Ohm] faza
 Ls_prof = 0.19e-3;     % [H]   Ld = Lq
 
-% Pomiar: R_LL z regresji U = R*I + U0 (0.15-2.25 A): rb 0.539, yb 0.546, yr 0.555 Ohm
-%         L_LL para ab: 0.586 mH @1 kHz, 0.579 mH @2 kHz (jedno polozenie wirnika!)
-R_LL_meas = mean([0.539 0.546 0.555]);   % [Ohm] linia-linia
-L_LL_meas = mean([0.586e-3 0.579e-3]);   % [H]   linia-linia
-T_meas    = 20;        % [degC] temperatura uzwojen przy pomiarze  <-- WPISZ jesli znasz
-T_wind    = 20;        % [degC] temperatura do symulacji (np. 80 = goracy silnik)
+% Pomiar R: regresja U = R*I + U0, 0.1-2 A, ~20 degC, UT33D+   [cz-nb  zl-nb  zl-cz]
+R_LL_meas = mean([0.537 0.545 0.554]);          % [Ohm] linia-linia, srednia
+% Pomiar L: Rs 100 Ohm, ~15 mA, wirnik zablokowany, TEN SAM kat dla 3 par,
+%           srednia z 0.5 / 1 / 2 kHz (okolice pasma petli pradu)
+L_LL_3 = [mean([498 494 495]) ...               % cz-nb  [uH]
+          mean([574 567 565]) ...               % zl-nb
+          mean([578 571 573])] * 1e-6;          % zl-cz  -> [H]
+% (20 kHz: 441 / 496 / 498 uH - spadek przez prady wirowe, do petli pradu nie uzywac)
+T_meas    = 20;        % [degC] temperatura uzwojen przy pomiarze
+T_wind    = 20;        % [degC] temperatura do symulacji (70 degC -> Rs ~0.326 Ohm)
 alpha_cu  = 0.00393;   % [1/K] wspolczynnik temperaturowy miedzi
 
 %% --- Pozostale parametry silnika (profiler) ---
 p        = 7;          % pary biegunow (jak w profilerze!)
-Ke       = 6.95;       % [Vrms L-L / krpm]
+Ke       = 6.95;       % [Vrms L-L / krpm] -> psi = 7.74 mWb, Kt = 0.0813 Nm/A pk
 J_rotor  = 8.47e-6;    % [kg m^2] wirnik
 Bf       = 3.84e-6;    % [N m s/rad] tarcie lepkie
 
@@ -43,7 +47,7 @@ K_c    = 110;          % [Nm/rad] ZALOZENIE: klowe ROTEX 14 98ShA (6.4 deg przy 
 zeta_c = 0.08;         % tlumienie wzgledne: metal ~0.01-0.05, elastomer (pajak) ~0.05-0.1
 
 %% --- Zasilanie i plytka ---
-Vbus   = 36.00;         % [V] zasilanie w symulacji (6S)
+Vbus   = 22.2;         % [V] zasilanie w symulacji (6S)
 Vbus_wb = 15.89;       % [V] napiecie, dla ktorego Workbench liczyl nastawy pradu
 Imax   = 30;           % [A pk] limit pradu fazowego
 Rsh    = 0.003;        % [Ohm] bocznik
@@ -59,14 +63,14 @@ maxmod = 0.95;         % max modulation index
 %                  to samo pasmo i to samo zero co zaprojektowal Workbench
 %  'projekt'     = od zera: Kp = Ls*wc_i, Ki = Rs*wc_i (kompensacja bieguna R/L)
 gain_mode_i = 'projekt';
-wc_i        = 5000;    % [rad/s] pasmo dla trybu 'projekt'
+wc_i        = 2*pi*1000; % [rad/s] pasmo dla trybu 'projekt' (1 kHz)
 
 Kp_i_wb = 9196;  KpDIV_i = 1024;     % Torque/Flux Kp (Workbench, liczone dla profilera)
 Ki_i_wb = 7743;  KiDIV_i = 16384;    % Torque/Flux Ki
 
 %% --- Nastawy petli predkosci (Workbench) ---
 Kp_w = 800;   KpDIV_w = 64;       % Speed Kp
-Ki_w = 250;    KiDIV_w = 1024;     % Speed Ki (w modelu bylo 60, wczesniej tu 250 - sprawdz Workbench)
+Ki_w = 250;   KiDIV_w = 1024;     % Speed Ki
 
 %% --- Hallotrony (estymator predkosci) ---
 Nfifo  = 4;            % bufor usredniania
@@ -75,7 +79,7 @@ hallTO = 0.2;          % [s] brak zbocza -> predkosc 0
 %% --- Scenariusz testu (nazwy wpisane w bloki modelu) ---
 t_end      = 5;        % [s]   czas symulacji (Simulation parameters > Stop time)
 t_start    = 0.1;      % [s]   Step: start zadawania predkosci
-n_ref      = 1600;     % [rpm SILNIKA] Step: 1600 = 400 rpm wiertla przy 1:4
+n_ref      = 1600;     % [rpm SILNIKA] Step: wiertlo = n_ref/N_gear
 ramp_up    = 3000;     % [rpm/s] Rate Limiter
 ramp_down  = -1000;    % [rpm/s] Rate Limiter
 % Obciazenie NA WIERTLE: skok T_step w t_load, potem rampa do T_drill

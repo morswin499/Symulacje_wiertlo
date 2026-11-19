@@ -66,7 +66,7 @@ Plecs {
   InvalidNetlistFunctionEvaluationMsg "1"
   IncompatibleInitialConditionMsg "2"
   Schematic {
-    Location      [0, 0; 1902, 964]
+    Location      [1023, 2160; 2961, 4188]
     ZoomFactor    1.29058
     SliderPosition [257, 0]
     ShowBrowser   off
@@ -93,7 +93,7 @@ Plecs {
       }
       Parameter {
         Variable      "L"
-        Value         "[Ls Ls]"
+        Value         "[Ld Lq]"
         Show          off
       }
       Parameter {
@@ -579,7 +579,7 @@ Plecs {
       Type          Step
       Name          "Step"
       Show          on
-      Position      [365, 225]
+      Position      [370, 225]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -652,11 +652,11 @@ Plecs {
       Flipped       off
       LabelPosition south
       Frame         [-15, -30; 15, 30]
-      Location      [0, 0; 1902, 986]
+      Location      [0, 0; 1866, 986]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAANEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAduAAAAjvw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB24AAABEAP///wAAB24AAAMnAAAA"
+"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAdKAAAAjvw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB0oAAABEAP///wAAB0oAAAMnAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
@@ -880,9 +880,9 @@ Plecs {
       Name          "J_wiertla"
       Show          on
       Position      [1450, 445]
-      Direction     up
+      Direction     right
       Flipped       off
-      LabelPosition east
+      LabelPosition south
       Parameter {
         Variable      "J"
         Value         "J_C"
@@ -955,16 +955,16 @@ Plecs {
       Flipped       off
       LabelPosition south
       Frame         [-15, -15; 15, 15]
-      Location      [1023, 2160; 2925, 3146]
+      Location      [1023, 2160; 2889, 3146]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAAFkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAduAAAAg/w"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB24AAABEAP///wAAB24AAAMyAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAADEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAdKAAAAY/w"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB0oAAABEAP///wAAB0oAAANSAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "{\"DefaultSecSize\":100,\"FirstSecSize\":149,\"Labels\":["
-"],\"VisualIdxs\":[]}"
+      HeaderState   "{\"DefaultSecSize\":0,\"FirstSecSize\":149,\"Labels\":[],"
+"\"VisualIdxs\":[]}"
       PlotPalettes  "AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
       Axes          "2"
@@ -1261,6 +1261,13 @@ Plecs {
     }
     Connection {
       Type          Rotational
+      SrcComponent  "Perm.-Magnet SM"
+      SrcTerminal   4
+      DstComponent  "Gear"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Rotational
       SrcComponent  "Rotational\nFrame"
       SrcTerminal   1
       Points        [1645, 445]
@@ -1309,13 +1316,6 @@ Plecs {
       SrcTerminal   1
       Points        [1260, 365; 1260, 315]
       DstComponent  "Scope1"
-      DstTerminal   2
-    }
-    Connection {
-      Type          Rotational
-      SrcComponent  "Perm.-Magnet SM"
-      SrcTerminal   4
-      DstComponent  "Gear"
       DstTerminal   2
     }
   }

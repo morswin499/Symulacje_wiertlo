@@ -3,14 +3,18 @@
 %  Wymaga wczesniejszego run("aps4060_params.m")
 % =====================================================================
 
-%% --- Wybor Rs, Ls ---
+%% --- Wybor Rs, Ld, Lq ---
+% L miedzyfazowe w funkcji kata: L_LL = (Ld+Lq) + (Ld-Lq)*cos(2*phi).
+% 3 pary = 3 probki co 120 deg (w 2*phi) -> srednia = Ld+Lq, amplituda = Lq-Ld
 Rs_pom = R_LL_meas/2 * (1 + alpha_cu*(T_wind - T_meas));   % [Ohm] faza, przeliczona na T_wind
-Ls_pom = L_LL_meas/2;                                       % [H]   faza
+L_sr   = mean(L_LL_3);
+L_amp  = sqrt(2/3*sum((L_LL_3 - L_sr).^2));
 switch src
-  case 'pomiar',   Rs = Rs_pom;   Ls = Ls_pom;
-  case 'profiler', Rs = Rs_prof;  Ls = Ls_prof;
+  case 'pomiar',   Rs = Rs_pom;   Ld = (L_sr - L_amp)/2;  Lq = (L_sr + L_amp)/2;
+  case 'profiler', Rs = Rs_prof;  Ld = Ls_prof;           Lq = Ls_prof;
   otherwise, error('src musi byc ''pomiar'' albo ''profiler''');
 end
+Ls = (Ld + Lq)/2;      % do nastaw: MCSDK (i C-Script) ma te same Kp, Ki dla osi d i q
 
 %% --- Model silnika do bloku PMSM ---
 psi_m = Ke*sqrt(2)/sqrt(3) / (1000*2*pi/60);   % [Vs/rad mech]
@@ -98,15 +102,15 @@ ws      = Kp_w_ph*Kt/J;                        % pasmo petli predkosci
 %% --- Granice napedu ---
 Vmax  = maxmod*Vbus/sqrt(3);
 n_max = Vmax/psi_m*60/(2*pi);                  % bez obciazenia
-a = psi_m^2 + (p*Ls*Imax)^2;  b = 2*psi_m*Rs*Imax;  c = (Rs*Imax)^2 - Vmax^2;
+a = psi_m^2 + (p*Lq*Imax)^2;  b = 2*psi_m*Rs*Imax;  c = (Rs*Imax)^2 - Vmax^2;
 n_corner = (-b + sqrt(b^2 - 4*a*c))/(2*a)*60/(2*pi);   % pelny moment do tej predkosci
 T_max = Kt*Imax;
 Pcu_max = 1.5*Rs*Imax^2;                       % [W] straty w miedzi przy Imax (amplituda)
 
 %% --- Podsumowanie ---
 fprintf('\n=== APS 4060S | Vbus %.2f V | PWM %.0f kHz ===\n', Vbus, fpwm/1e3);
-fprintf('Parametry: %s  Rs = %.4f Ohm, Ls = %.3f mH  (profiler %.3f Ohm, %.3f mH)\n', ...
-        src, Rs, Ls*1e3, Rs_prof, Ls_prof*1e3);
+fprintf('Parametry: %s  Rs = %.4f Ohm, Ld = %.3f, Lq = %.3f mH (srednio %.3f)  [profiler %.3f Ohm, %.3f mH]\n', ...
+        src, Rs, Ld*1e3, Lq*1e3, Ls*1e3, Rs_prof, Ls_prof*1e3);
 if strcmp(src,'pomiar')
   fprintf('           Rs przy %.0f degC (pomiar %.0f degC), R_LL = %.4f Ohm\n', T_wind, T_meas, R_LL_meas);
 end
