@@ -79,7 +79,7 @@ hallTO = 0.2;          % [s] brak zbocza -> predkosc 0
 %% --- Scenariusz testu (nazwy wpisane w bloki modelu) ---
 t_end      = 5;        % [s]   czas symulacji (Simulation parameters > Stop time)
 t_start    = 0.1;      % [s]   Step: start zadawania predkosci
-n_ref      = 1600;     % [rpm SILNIKA] Step: wiertlo = n_ref/N_gear
+n_ref      = 1500;     % [rpm SILNIKA] Step: wiertlo = n_ref/N_gear
 ramp_up    = 3000;     % [rpm/s] Rate Limiter
 ramp_down  = -1000;    % [rpm/s] Rate Limiter
 % Obciazenie NA WIERTLE: skok T_step w t_load, potem rampa do T_drill
