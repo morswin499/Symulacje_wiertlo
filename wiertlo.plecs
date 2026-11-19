@@ -52,7 +52,7 @@ Plecs {
   ExternalModeSettings ""
   AlgebraicLoopMethod "1"
   AlgebraicLoopTolerance "1e-6"
-  ScriptsDialogGeometry "[726 478 500 245]"
+  ScriptsDialogGeometry "[0 0 500 245]"
   ScriptsDialogSplitterPos "100"
   MixedSignalSolverBypassOperatingPoint "1"
   MixedSignalSolverInitialConditions "2"
@@ -63,17 +63,13 @@ Plecs {
   OperatingPointAbsoluteNewtonTolerance "1e-12"
   OperatingPointNodalVoltageNewtonTolerance "1e-6"
   SpiceTemperature "27"
-  SpiceShuntGMin "0"
-  SpiceInductorRPar "0"
-  SpiceInductorRSer "0"
-  SpiceCapacitorGPar "0"
   NetlistParserDetails "2"
   InvalidNetlistFunctionEvaluationMsg "1"
   IncompatibleInitialConditionMsg "2"
   Schematic {
-    Location      [2021, 5206; 3557, 6053]
+    Location      [0, 0; 3840, 2046]
     ZoomFactor    1.29058
-    SliderPosition [517, 0]
+    SliderPosition [0, 0]
     ShowBrowser   off
     BrowserWidth  100
     Component {
@@ -657,16 +653,16 @@ Plecs {
       Flipped       off
       LabelPosition south
       Frame         [-15, -115; 15, 115]
-      Location      [0, 22; 1365, 651]
+      Location      [0, 0; 3840, 2068]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAANAA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGIA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABiAP///wAAAAMAAAVVAAAAdfw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABVUAAABEAP///wAABVUAAAHbAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAANEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAA8AAAAAdfw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAADwAAAABEAP///wAADwAAAAd6AAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "{\"DefaultSecSize\":0,\"FirstSecSize\":123,\"Labels\":[\""
-"Delta\"],\"VisualIdxs\":[3]}"
+      HeaderState   "{\"DefaultSecSize\":100,\"FirstSecSize\":126,\"Labels\":["
+"\"Delta\"],\"VisualIdxs\":[3]}"
       PlotPalettes  "AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -812,7 +808,7 @@ Plecs {
       Type          Step
       Name          "Step1"
       Show          on
-      Position      [1475, 295]
+      Position      [1440, 255]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -841,7 +837,7 @@ Plecs {
       Type          Sum
       Name          "Sum"
       Show          off
-      Position      [1530, 295]
+      Position      [1510, 255]
       Direction     up
       Flipped       off
       LabelPosition south
@@ -960,16 +956,16 @@ Plecs {
       Flipped       off
       LabelPosition south
       Frame         [-15, -15; 15, 15]
-      Location      [0, 24; 1365, 653]
+      Location      [0, 0; 1365, 637]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAAFgA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGIA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABiAP///wAAAAMAAAVVAAAAgvw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABVUAAABEAP///wAABVUAAAHOAAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAAFkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAVVAAAAgvw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABVUAAABEAP///wAABVUAAAHWAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "{\"DefaultSecSize\":100,\"FirstSecSize\":149,\"Labels\":["
-"],\"VisualIdxs\":[]}"
+      HeaderState   "{\"DefaultSecSize\":0,\"FirstSecSize\":149,\"Labels\":[],"
+"\"VisualIdxs\":[]}"
       PlotPalettes  "AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
       Axes          "2"
@@ -1070,7 +1066,7 @@ Plecs {
       SrcComponent  "Components/Control/Sources/Ramp"
       Name          "Ramp"
       Show          on
-      Position      [1460, 370]
+      Position      [1440, 330]
       Direction     up
       Flipped       off
       LabelPosition south
@@ -1154,16 +1150,16 @@ Plecs {
       Flipped       off
       LabelPosition south
       Frame         [-15, -15; 15, 15]
-      Location      [0, 24; 1365, 653]
-      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAADAA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGIA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABiAP///wAAAAMAAAVVAAAAVvw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABVUAAABEAP///wAABVUAAAH6AAAA"
+      Location      [1023, 2160; 4863, 4228]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAC0AAAHmPwCAAAAA/sAAAAQAFoAbwBvA"
+"G0AQQByAGUAYQAAAAAA/////wAAADEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMBAAAANQAAB5gAAABjAP///wAAAAMAAA8AAAAAV/w"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAADwAAAABEAP///wAADkYAAAeYAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "{\"DefaultSecSize\":0,\"FirstSecSize\":123,\"Labels\":[],"
-"\"VisualIdxs\":[]}"
+      HeaderState   "{\"DefaultSecSize\":0,\"FirstSecSize\":126,\"Labels\":[\""
+"Delta\"],\"VisualIdxs\":[3]}"
       PlotPalettes  "AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       Axes          "1"
       TimeRange     "0"
@@ -1654,15 +1650,15 @@ Plecs {
       Flipped       off
       LabelPosition south
       Frame         [-15, -15; 15, 15]
-      Location      [0, 24; 1365, 653]
+      Location      [0, 0; 1365, 637]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAADAA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGIA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABiAP///wAAAAMAAAVVAAAAVvw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABVUAAABEAP///wAABVUAAAH6AAAA"
+"G0AQQByAGUAYQAAAAAA/////wAAADEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAVVAAAAV/w"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABVUAAABEAP///wAABVUAAAIBAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "{\"DefaultSecSize\":0,\"FirstSecSize\":123,\"Labels\":[],"
+      HeaderState   "{\"DefaultSecSize\":0,\"FirstSecSize\":126,\"Labels\":[],"
 "\"VisualIdxs\":[]}"
       PlotPalettes  "AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       Axes          "1"
@@ -1812,7 +1808,7 @@ Plecs {
       Type          Signal
       SrcComponent  "Sum"
       SrcTerminal   1
-      Points        [1580, 295]
+      Points        [1580, 255]
       DstComponent  "Torque2"
       DstTerminal   2
     }
@@ -1849,7 +1845,7 @@ Plecs {
       Type          Signal
       SrcComponent  "Ramp"
       SrcTerminal   1
-      Points        [1530, 370]
+      Points        [1510, 330]
       DstComponent  "Sum"
       DstTerminal   3
     }
@@ -1875,30 +1871,6 @@ Plecs {
       Points        [1220, 70; 1220, 95]
       DstComponent  "Mux1"
       DstTerminal   2
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Demux"
-      SrcTerminal   2
-      Points        [920, 35; 920, 30]
-      DstComponent  "Mux2"
-      DstTerminal   3
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Mux2"
-      SrcTerminal   1
-      Points        [975, 25; 975, 5; 1005, 5]
-      Branch {
-        Points        [1055, 5; 1055, 20]
-        DstComponent  "Scope2"
-        DstTerminal   1
-      }
-      Branch {
-        Points        [1005, 85]
-        DstComponent  "Scope"
-        DstTerminal   1
-      }
     }
     Connection {
       Type          Signal
@@ -2005,7 +1977,7 @@ Plecs {
       Type          Signal
       SrcComponent  "Demux"
       SrcTerminal   4
-      Points        [950, 135; 950, 130; 980, 130; 980, 185]
+      Points        [980, 135; 980, 185]
       DstComponent  "Scope"
       DstTerminal   3
     }
@@ -2013,7 +1985,7 @@ Plecs {
       Type          Signal
       SrcComponent  "Demux"
       SrcTerminal   3
-      Points        [965, 85; 965, 80; 990, 80; 990, 135]
+      Points        [990, 85; 990, 135]
       DstComponent  "Scope"
       DstTerminal   2
     }
@@ -2037,6 +2009,30 @@ Plecs {
       Branch {
         Points        [1010, 345]
         DstComponent  "Scope3"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Mux2"
+      SrcTerminal   1
+      Points        [975, 25; 975, 5; 1055, 5; 1055, 20]
+      DstComponent  "Scope2"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Demux"
+      SrcTerminal   2
+      Points        [920, 35]
+      Branch {
+        Points        [920, 30]
+        DstComponent  "Mux2"
+        DstTerminal   3
+      }
+      Branch {
+        Points        [920, 55; 1010, 55; 1010, 85]
+        DstComponent  "Scope"
         DstTerminal   1
       }
     }

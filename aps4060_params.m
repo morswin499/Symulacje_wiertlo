@@ -26,11 +26,16 @@ T_meas    = 20;        % [degC] temperatura uzwojen przy pomiarze
 T_wind    = 20;        % [degC] temperatura do symulacji (70 degC -> Rs ~0.326 Ohm)
 alpha_cu  = 0.00393;   % [1/K] wspolczynnik temperaturowy miedzi
 
-%% --- Pozostale parametry silnika (profiler) ---
-p        = 7;          % pary biegunow (jak w profilerze!)
-Ke       = 6.95;       % [Vrms L-L / krpm] -> psi = 7.74 mWb, Kt = 0.0813 Nm/A pk
-J_rotor  = 8.47e-6;    % [kg m^2] wirnik
-Bf       = 3.84e-6;    % [N m s/rad] tarcie lepkie
+%% --- Pozostale parametry silnika ---
+p        = 7;          % pary biegunow
+Ke       = 6.95;       % [Vrms L-L / krpm] (profiler) -> psi = 7.74 mWb, Kt = 0.0813 Nm/A pk
+% Mechanika z wybiegu + Iq ustalonego (19.11, 4 wybiegi z 1450 obr/min, Iq przy 1500 i 1600):
+%   -dw/dt = 156 + 0.72*w [rad/s^2];  Kt*Iq(1500) = 12.0 mNm, Kt*Iq(1600) = 12.4 mNm
+%   (profiler: J = 8.47e-6, Bf = 3.84e-6 - J zanizone ~5x)
+J_rotor  = 4.5e-5;     % [kg m^2] wirnik (z rampy wychodzi 5.0e-5; zakladane 50 us/probke logu)
+Bf       = 3.2e-5;     % [N m s/rad] tarcie lepkie -> blok PMSM (F)
+T_c      = 7.0e-3;     % [Nm] tarcie suche - blok PMSM go NIE ma; Rotational Friction na wale
+                       %      albo T_c*tanh(n/5) w obciazeniu (dla wiertla pomijalne)
 
 %% --- Mechanika napedu (od mechanikow) ---
 % coupling_after_gear = 1:  silnik -> przekladnia N -> sprzeglo -> wiertlo [J_C] -> gleba
@@ -73,14 +78,14 @@ Kp_w = 800;   KpDIV_w = 64;       % Speed Kp
 Ki_w = 250;   KiDIV_w = 1024;     % Speed Ki
 
 %% --- Hallotrony (estymator predkosci) ---
-Nfifo  = 4;            % bufor usredniania
+Nfifo  = 6;            % bufor usredniania
 hallTO = 0.2;          % [s] brak zbocza -> predkosc 0
 
 %% --- Scenariusz testu (nazwy wpisane w bloki modelu) ---
 t_end      = 5;        % [s]   czas symulacji (Simulation parameters > Stop time)
 t_start    = 0.1;      % [s]   Step: start zadawania predkosci
-n_ref      = 1500;     % [rpm SILNIKA] Step: wiertlo = n_ref/N_gear
-ramp_up    = 3000;     % [rpm/s] Rate Limiter
+n_ref      = 1600;     % [rpm SILNIKA] Step: wiertlo = n_ref/N_gear
+ramp_up    = 3200;     % [rpm/s] Rate Limiter
 ramp_down  = -1000;    % [rpm/s] Rate Limiter
 % Obciazenie NA WIERTLE: skok T_step w t_load, potem rampa do T_drill
 t_load     = 1;        % [s]   Step1
